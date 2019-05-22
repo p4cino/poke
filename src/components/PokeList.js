@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './styles/PokeList.css';
 import PokeCell from "./PokeCell";
 
+//@todo rewrite api connect to another file and refactor this file
 class PokeList extends Component {
     const
     api = "https://pokeapi.co/api/v2";
@@ -27,7 +28,8 @@ class PokeList extends Component {
         const cells = this.state.results.map(function(pokemon, key) {
             return (
                 <PokeCell
-                    pokemon={{name: pokemon.name, key: key}}
+                    key={key}
+                    pokemon={{name: pokemon.name, url: pokemon.url}}
                 />
             );
         });
