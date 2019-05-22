@@ -1,9 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
+import './styles/PokeCell.css';
 
-class PokeCell extends Component {
-    render() {
-        return <button className="poke-cell"></button>
-    }
-}
+const PokeCell = ({ pokemon }) => <button className="poke-cell">{pokemon.name}</button>;
 
 export default PokeCell;
