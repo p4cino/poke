@@ -8,7 +8,6 @@ class PokeList extends Component {
 
     constructor(props) {
         super(props);
-        this.limit = 30;
         this.endpoint = '/pokemon/';
         this.state = {
             results: [],
@@ -28,7 +27,6 @@ class PokeList extends Component {
         const cells = this.state.results.map(function(pokemon, key) {
             return (
                 <PokeCell
-                    key={key}
                     pokemon={{name: pokemon.name, key: key}}
                 />
             );

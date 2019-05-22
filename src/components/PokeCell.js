@@ -1,9 +1,13 @@
 import React from 'react';
-import './styles/PokeCell.css';
+import './styles/PokeCell.scss';
 
-const PokeCell = ({pokemon}) => {
+const PokeCell = ({pokemon, handleOnClick}) => {
+    const { name, key } = pokemon;
+
     const endpoint = "http://pokestadium.com/sprites/xy/";
-    return (<button className="poke-cell"><img src={endpoint + pokemon.name + ".gif"} /></button>);
+    const src = endpoint + name + ".gif";
+
+    return (<button onClick={() => handleOnClick(key)} className="poke-cell"><img src={src} alt={name} /></button>);
 }
 
 export default PokeCell;
