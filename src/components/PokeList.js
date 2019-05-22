@@ -9,7 +9,7 @@ class PokeList extends Component {
     constructor(props) {
         super(props);
         this.limit = 30;
-        this.apiQuery = '/pokemon/';
+        this.endpoint = '/pokemon/';
         this.state = {
             results: [],
             value: '',
@@ -19,16 +19,17 @@ class PokeList extends Component {
     }
 
     componentDidMount() {
-        fetch(this.api + this.apiQuery)
+        fetch(this.api + this.endpoint)
             .then(response => response.json())
             .then(data => this.setState({results: data.results}));
     }
 
     render() {
-        const cells = this.state.results.map(pokemon => {
+        const cells = this.state.results.map(function(pokemon, key) {
             return (
                 <PokeCell
-                    pokemon={{name: pokemon.name}}
+                    key={key}
+                    pokemon={{name: pokemon.name, key: key}}
                 />
             );
         });
