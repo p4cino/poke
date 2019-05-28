@@ -9,20 +9,19 @@ class PokeList extends Component {
         super(props);
         this.state = {
             results: [],
-            value: '',
-            suggestions: [],
-            showSuggestions: false
         };
     }
 
-
-    componentDidMount() {
-        API.get(`pokemon`)
+    getPokemons() {
+        const data = API.get(`pokemon`)
             .then(response => {
                 this.setState({results: response.data.results});
             });
     }
 
+    componentDidMount() {
+        this.getPokemons();
+    }
 
     render() {
         const cells = this.state.results.map(function (pokemon, key) {
