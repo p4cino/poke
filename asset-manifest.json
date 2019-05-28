@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/poke/static/css/main.b52f6eeb.chunk.css",
+    "main.js": "/poke/static/js/main.5ee18ecc.chunk.js",
+    "main.js.map": "/poke/static/js/main.5ee18ecc.chunk.js.map",
+    "runtime~main.js": "/poke/static/js/runtime~main.a8fd8cc3.js",
+    "runtime~main.js.map": "/poke/static/js/runtime~main.a8fd8cc3.js.map",
+    "static/js/2.4ae1c4df.chunk.js": "/poke/static/js/2.4ae1c4df.chunk.js",
+    "static/js/2.4ae1c4df.chunk.js.map": "/poke/static/js/2.4ae1c4df.chunk.js.map",
+    "index.html": "/poke/index.html",
+    "precache-manifest.d496b85c20fb90eb17f6c175448c4ade.js": "/poke/precache-manifest.d496b85c20fb90eb17f6c175448c4ade.js",
+    "service-worker.js": "/poke/service-worker.js",
+    "static/css/main.b52f6eeb.chunk.css.map": "/poke/static/css/main.b52f6eeb.chunk.css.map",
+    "static/media/index.css": "/poke/static/media/background.f5f20608.jpg"
+  }
+}
