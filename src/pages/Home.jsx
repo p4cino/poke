@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import Pokedex from "../components/Pokedex";
 
 function Home() {
     return (
         <div className="App">
-            Test 1
+            <Pokedex />
         </div>
     );
 }

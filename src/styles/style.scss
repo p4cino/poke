@@ -1,0 +1,5 @@
+@import "~normalize.css";
+
+body {
+  padding-top: env(safe-area-inset-top); /* iOS 11.2 */
+}
