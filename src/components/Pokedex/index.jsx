@@ -4,6 +4,7 @@ import API from "../../api";
 import List from "../List";
 
 import styles from './Pokedex.module.scss';
+import {PokedexProvider} from "./PokedexContext";
 
 class Pokedex extends React.Component {
     constructor(props) {
@@ -28,11 +29,13 @@ class Pokedex extends React.Component {
         const {pokemons} = this.state;
 
         return (
-            <div className={styles.wrapper}>
-                <div className={styles.pokedex}>
-                    <List pokemons={pokemons}/>
+            <PokedexProvider value={{state: this.state}}>
+                <div className={styles.wrapper}>
+                    <div className={styles.pokedex}>
+                        <List pokemons={pokemons}/>
+                    </div>
                 </div>
-            </div>
+            </PokedexProvider>
         );
     }
 }
