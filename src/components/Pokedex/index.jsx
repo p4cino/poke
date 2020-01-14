@@ -4,7 +4,6 @@ import API from "../../api";
 import List from "../List";
 
 import styles from './Pokedex.module.scss';
-import {PokedexProvider} from "./PokedexContext";
 
 class Pokedex extends React.Component {
     constructor(props) {
@@ -13,12 +12,40 @@ class Pokedex extends React.Component {
             pokemons: [],
             apiQuery: '/pokemon/',
             limit: 30,
-        }
+            increaseLimit: 10,
+            isLoading: true,
+        };
     }
 
     getPokemons = async () => {
-        const response = await API.get(`pokemon/`);
-        this.setState({pokemons: response.data.results});
+        await API.get(`pokemon/`, {
+            params: {
+                limit: this.state.limit,
+            }
+        })
+            .then(response => {
+                this.setState(prevState => ({
+                    pokemons: response.data.results,
+                    isLoading: false
+                }));
+            })
+            .catch(error => {
+                console.log('Woops', error);
+            });
+    };
+
+    handleScroll = (event) => {
+        let offsetHeight = event.currentTarget.offsetHeight;
+        let scrollTop = event.currentTarget.scrollTop;
+        let scrollHeight = event.currentTarget.scrollHeight;
+        let percentScroll = scrollTop / (scrollHeight - offsetHeight) * 100;
+
+        if (percentScroll >= 80) {
+            this.setState(prevState => ({
+                limit: prevState.limit + this.state.increaseLimit,
+            }));
+            this.getPokemons();
+        }
     };
 
     componentDidMount() {
@@ -29,13 +56,11 @@ class Pokedex extends React.Component {
         const {pokemons} = this.state;
 
         return (
-            <PokedexProvider value={{state: this.state}}>
-                <div className={styles.wrapper}>
-                    <div className={styles.pokedex}>
-                        <List pokemons={pokemons}/>
-                    </div>
+            <div className={styles.wrapper}>
+                <div className={styles.pokedex}>
+                    <List scroll={this.handleScroll} pokemons={pokemons}/>
                 </div>
-            </PokedexProvider>
+            </div>
         );
     }
 }
